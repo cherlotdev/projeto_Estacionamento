@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Estacionamento</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e8eef5;
+            text-align: center;
+            padding: 30px;
+        }
+        .box {
+            background: white;
+            padding: 25px;
+            max-width: 450px;
+            margin: auto;
+            border-radius: 12px;
+        }
+        input, select, button {
+            padding: 12px;
+            margin: 8px;
+            width: 85%;
+        }
+        button {
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🚗 Estacionamento</h1>
+
+    <form method="POST">
+        <input type="text" name="placa"
+               placeholder="Digite a placa" required>
+
+        <select name="tipo">
+            <option value="Carro">Carro</option>
+            <option value="Moto">Moto</option>
+        </select>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Veículos cadastrados</h2>
+
+    {% for v in veiculos %}
+        <p>
+            Placa: {{ v.placa }} |
+            {{ v.tipo }} |
+            R$ {{ v.preco() }}
+        </p>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
